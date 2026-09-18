@@ -17,8 +17,6 @@ public partial class Sevenfold : Node
 	{
 
 		node_evenness = Evenness(GetNodeLengths(nodes));
-		GD.Print($"{node_evenness}");
-
 		UpdateMultipliers(node_evenness, 1.0f);
 	}
 
@@ -64,10 +62,12 @@ public static float Evenness(int[] numbers)
 		for (int n = 0; n < multipliers.Length; n++)
 		{
 
-			float mult = multipliers[n];
 			multipliers[n] = 1f + evenness * multiplier_strength;
+			float mult = multipliers[n];
 			nodes_multipliers[nodes[n]] = mult;
-			//GD.Print($"{nodes_multipliers[nodes[n]]}");
+			GD.Print($"{nodes_multipliers[nodes[n]]}");
+
+			multiplier_strength *= 1f + (0.2f * evenness);
 		}		
 	}
 }
